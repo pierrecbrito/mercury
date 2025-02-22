@@ -1,4 +1,4 @@
-# MercuryPulse
+# Mercury
 
 **Transform emails into instant conversations with the speed of Mercury.**
 
