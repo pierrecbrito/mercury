@@ -25,3 +25,4 @@ async def login_user(user: User):
     if not user:
         raise HTTPException(status_code=400, detail="Invalid credentials")
     return {"message": "User logged in successfully"}
+    
