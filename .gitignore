@@ -1,28 +1,28 @@
-*.log           # Arquivos de log
-*.pyc          # Bytecode Python compilado
-*.pyo          # Arquivos otimizados Python
-*.pyd          # Arquivos Python DLL
-__pycache__/   # Diretórios de cache Python
-*.DS_Store     # Arquivos de metadados do macOS
-*.swp          # Arquivos temporários do Vim
-*.env          # Variáveis de ambiente (ex.: credenciais da Gmail API)
+*.log           
+*.pyc       
+*.pyo     
+*.pyd         
+__pycache__/  
+*.DS_Store     
+*.swp         
+*.env          
 
-venv/          # Ambiente virtual Python (pode ser venv, env, etc.)
-*.egg-info/    # Metadados de pacotes Python
-dist/          # Diretórios de distribuição
-build/         # Diretórios de build
-*.sqlite3      # Banco de dados SQLite local (se usado)
+.venv/         
+*.egg-info/  
+dist/         
+build/       
+*.sqlite3     
 
-node_modules/  # Dependências do Node.js
-dist/          # Diretório de build do React
-build/         # Outro nome comum para build
-*.tsbuildinfo  # Arquivos de build incremental do TypeScript
-*.map          # Source maps gerados
+node_modules/ 
+dist/          
+build/        
+*.tsbuildinfo  
+*.map          
 
-coverage/      # Relatórios de cobertura de testes
-*.lcov         # Arquivos de cobertura
-.test/         # Diretórios temporários de teste
+coverage/    
+*.lcov         
+.test/         
 
-credentials.json  # Credenciais da Gmail API
-*.key          # Chaves privadas
-*.pem          # Certificados
+credentials.json  
+*.key       
+*.pem         
