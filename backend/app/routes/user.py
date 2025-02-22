@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from dotenv import load_dotenv
 from ..models.user import User
-from ..database import user_collection
+from ..database import users_collection
 import os
 
 load_dotenv()
@@ -10,5 +10,6 @@ user_router = APIRouter()
 
 @user_router.post("/register")
 async def register_user(user: User):
-    user_collection
+    if users_collection.find_one({"email": user.email}):
+        raise HTTPException(status_code=400, detail="User already exists")
     pass
