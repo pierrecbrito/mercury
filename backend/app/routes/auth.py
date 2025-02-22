@@ -22,7 +22,7 @@ auth_router = APIRouter()
 def register_user(user: User):
     if users_collection.find_one({"email": user.email}):
         raise HTTPException(status_code=400, detail="User already exists")
-    
+    print(user)
     user.password_hash = hashlib.sha256(user.password_hash.encode()).hexdigest()
     result = users_collection.insert_one(user.model_dump())
     return {"message": "User registered successfully"}

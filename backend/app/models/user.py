@@ -15,11 +15,22 @@ class User(BaseModel):
         if not username.strip():
             raise ValueError("Username cannot be empty")
         
+        if len(username) < 3:
+            raise ValueError("Username must be at least 3 characters long")
+        
+        if len(username) > 20:
+            raise ValueError("Username must be at most 20 characters long")
+        
+        return username
+        
+        
     @field_validator('password_hash')
     @classmethod
-    def validate_password(cls, password):
-        if not password.strip():
+    def validate_password(cls, password_hash):
+        if not password_hash.strip():
             raise ValueError("password cannot be empty")
         
-        if len(password) < 8:
+        if len(password_hash) < 8:
             raise ValueError("password must be at least 8 characters long")
+        
+        return password_hash
