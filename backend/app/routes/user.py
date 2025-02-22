@@ -15,5 +15,5 @@ async def register_user(user: User):
         raise HTTPException(status_code=400, detail="User already exists")
     
     user.password_hash = hashlib.sha256(user.password_hash.encode()).hexdigest()
-    result = users_collection.insert_one(user.dict())
+    result = users_collection.insert_one(user.model_dump())
     return {"message": "User registered successfully"}
