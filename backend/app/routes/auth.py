@@ -10,7 +10,7 @@ load_dotenv()
 auth_router = APIRouter()
 
 @auth_router.post("/register")
-async def register_user(user: User):
+def register_user(user: User):
     if users_collection.find_one({"email": user.email}):
         raise HTTPException(status_code=400, detail="User already exists")
     
@@ -19,7 +19,7 @@ async def register_user(user: User):
     return {"message": "User registered successfully"}
 
 @auth_router.post("/login")
-async def login_user(user: User):
+def login_user(user: User):
     user.password_hash = hashlib.sha256(user.password_hash.encode()).hexdigest()
     user = users_collection.find_one(user.model_dump())
     if not user:
