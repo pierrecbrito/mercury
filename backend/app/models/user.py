@@ -34,3 +34,23 @@ class User(BaseModel):
             raise ValueError("password must be at least 8 characters long")
         
         return password_hash
+    
+class UserCredentials(BaseModel):
+    email: EmailStr
+    password_hash: str
+
+    @field_validator('email')
+    @classmethod
+    def validate_email(cls, email):
+        if not email.strip():
+            raise ValueError("Email cannot be empty")
+        
+        return email
+
+    @field_validator('password_hash')
+    @classmethod
+    def validate_password(cls, password_hash):
+        if not password_hash.strip():
+            raise ValueError("password cannot be empty")
+        
+        return password_hash
