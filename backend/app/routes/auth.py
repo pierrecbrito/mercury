@@ -16,27 +16,6 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 auth_router = APIRouter(tags=["Authentication"])
 
-@auth_router.post("/register")
-def register_user(user: User):
-    if users_collection.find_one({"email": user.email}):
-        raise HTTPException(status_code=400, detail="User already exists")
-
-    user.password_hash = hashlib.sha256(user.password_hash.encode()).hexdigest()
-    users_collection.insert_one(user.model_dump())
-    return {"message": "User registered successfully"}
-
-@auth_router.post("/login")
-def login_user(user_data: UserCredentials):
-
-    user_data.password_hash = hashlib.sha256(user_data.password_hash.encode()).hexdigest()
-    user = users_collection.find_one({"email": user_data.email, "password_hash": user_data.password_hash})
-
-    if not user:
-        raise HTTPException(status_code=400, detail="Invalid credentials")
-    
-    access_token = create_access_token(data={"sub": user["email"]})
-    return {"access_token": access_token, "token_type": "bearer"}
-
 def create_access_token(data: dict, expires_delta: timedelta = timedelta(hours=1)):
     to_encode = data.copy()
     expire = datetime.now(timezone.utc) + expires_delta  # Usando timezone.utc corretamente
@@ -60,3 +39,37 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     user = users_collection.find_one({"email": email})
     if user is None:
         raise credentials_exception
+    
+    return user
+    
+
+@auth_router.post("/register")
+def register_user(user: User):
+    if users_collection.find_one({"email": user.email}):
+        raise HTTPException(status_code=400, detail="User already exists")
+
+    user.password_hash = hashlib.sha256(user.password_hash.encode()).hexdigest()
+    users_collection.insert_one(user.model_dump())
+    return {"message": "User registered successfully"}
+
+@auth_router.post("/login")
+def login_user(user_data: UserCredentials):
+
+    user_data.password_hash = hashlib.sha256(user_data.password_hash.encode()).hexdigest()
+    user = users_collection.find_one({"email": user_data.email, "password_hash": user_data.password_hash})
+
+    if not user:
+        raise HTTPException(status_code=400, detail="Invalid credentials")
+    
+    access_token = create_access_token(data={"sub": user["email"]})
+    return {"access_token": access_token, "token_type": "bearer"}
+
+@auth_router.get("/me")
+async def read_current_user(current_user: User = Depends(get_current_user)):
+    return {
+        "email": current_user['email'],
+        "username": current_user['username'],
+        "created_at": current_user['created_at'],
+    }
+
+
