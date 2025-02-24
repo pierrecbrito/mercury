@@ -1,11 +1,11 @@
 # Mercury
 
-**Transform emails into instant conversations with the speed of Mercury.**
+**A fast and modern chat experience.**
 
 [![Build Status](https://img.shields.io/badge/build-in%20progress-orange)](https://github.com/your-username/Mercury)  
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Mercury is a full-stack application that reimagines email communication, bringing the fluidity and energy of real-time chats—like WhatsApp—straight to your inbox. Inspired by Mercury, the Roman god of messengers, this project syncs emails with a dynamic interface, letting you respond to messages with divine swiftness.
+Mercury is a real-time chat application designed for speed and simplicity. Inspired by the Roman god of messengers, Mercury delivers seamless conversations with an intuitive interface and instant communication.
 
 > **Status**: This project is under construction. Core features are being implemented, and enhancements are on the way. Stay tuned for updates!
 
@@ -13,21 +13,15 @@ Mercury is a full-stack application that reimagines email communication, bringin
 
 ## About the Project
 
-Picture your emails as chat threads: messages organized by sender, real-time responses, and a modern experience free from traditional formality. Mercury leverages the Gmail API to fetch and organize your emails, paired with WebSockets to create a lively, pulsating conversation interface.
+Mercury provides a modern messaging experience, focusing on real-time interactions, instant notifications, and a clean user interface.
 
-### Planned Features
-- **Email Sync**: Import emails from Gmail and organize them into conversations.
-- **Real-Time Chat**: Reply to messages directly in the interface, sent as emails.
-- **Dynamic Notifications**: Instant updates via WebSockets for new messages.
-- **Intuitive Design**: A UI inspired by modern messaging apps.
+### Features
+- **Instant Messaging**: Real-time chat functionality for seamless conversations.
+- **Dynamic Notifications**: Stay updated with instant message alerts.
+- **Intuitive UI**: A sleek and modern chat interface for smooth user experience.
 
 ### Technologies
-- **Back-end**: FastAPI (Python) with WebSockets for real-time functionality.
-- **Front-end**: React + TypeScript for a smooth, typed interface.
-- **Integration**: Gmail API for email access.
+- **Back-end**: FastAPI (Python) with WebSockets for real-time communication.
+- **Front-end**: React + TypeScript for a fast and responsive UI.
 - **Database**: (In planning, possibly MongoDB or PostgreSQL).
-
-
-
-
 
