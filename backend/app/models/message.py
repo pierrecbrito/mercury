@@ -1,9 +1,11 @@
 from pydantic import BaseModel
+from typing import Optional
 from datetime import datetime
 
 class Message(BaseModel):
-    user_id: str
-    thread_id: str
+    id: str
+    conversation_id: str
     sender: str
     content: str
-    timestamp: datetime
+    attachment_url: Optional[str] = None
+    sent_at: datetime
