@@ -9,3 +9,6 @@ db = client["mercury"]
 
 users_collection = db["users"]
 messages_collection = db["messages"]
+conversation_collection = db["conversation"]
+conversation_participan_collection = db["conversation_participant"]
+message_read_collection = db["message_read"]
