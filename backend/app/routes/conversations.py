@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends, status
-from database import conversation_collection
+from database import conversation_collection, conversation_participant_collection
 from ..models.conversation import Conversation
 from ..main import get_current_user
 from bson import ObjectId
@@ -26,7 +26,15 @@ async def get_conversation(conversation_id: str, current_user: dict = Depends(ge
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Conversation not found")
 
     return parse_conversation(conversation)
-    
+
+@conversations_router.post("/conversations")
+async def create_conversation(current_user: dict = Depends(get_current_user)):
+    user_mail = current_user["email"]
+    conversation.participants.append(user_mail)
+    conversation_id = conversation_collection.insert_one(conversation.model_dump()).inserted_id
+
+    return { "id": str(conversation_id) }
+
 
 def parse_conversation(conversation):
     """Helper para converter ObjectId para string"""
