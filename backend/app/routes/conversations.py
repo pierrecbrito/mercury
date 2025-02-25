@@ -3,6 +3,7 @@ from database import conversation_collection, conversation_participant_collectio
 from ..models.conversation import Conversation
 from ..main import get_current_user
 from bson import ObjectId
+import datetime
 
 conversations_router = APIRouter(tags=["Conversations"])
 
@@ -28,10 +29,22 @@ async def get_conversation(conversation_id: str, current_user: dict = Depends(ge
     return parse_conversation(conversation)
 
 @conversations_router.post("/conversations")
-async def create_conversation(current_user: dict = Depends(get_current_user)):
-    user_mail = current_user["email"]
-    conversation.participants.append(user_mail)
+async def create_conversation(conversation: Conversation, current_user: dict = Depends(get_current_user)):
+    user_id = current_user["id"]
+    conversation.participants.append(id)
+    
+    # Adiciona os participantes adicionais
+    conversation.participants.extend(conversation.additional_participants)
+    
     conversation_id = conversation_collection.insert_one(conversation.model_dump()).inserted_id
+
+    # Cria entradas na coleção conversation_participant_collection para cada participante
+    for participant in conversation.participants:
+        conversation_participant_collection.insert_one({
+            "conversation_id": str(conversation_id),
+            "user_id": participant,
+            "joined_at": datetime.datetime.now()
+        })
 
     return { "id": str(conversation_id) }
 
