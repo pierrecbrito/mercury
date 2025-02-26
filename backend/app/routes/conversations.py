@@ -1,14 +1,14 @@
 from fastapi import APIRouter, HTTPException, Depends, status
 from database import conversation_collection, conversation_participant_collection
-from ..models.conversation import Conversation
+from ..models.conversation import Conversation, CreateConversationRequest, ConversationResponse
 from ..main import get_current_user
 from bson import ObjectId
 import datetime
 
-conversations_router = APIRouter(tags=["Conversations"])
+conversations_router = APIRouter(prefix='/convesations', tags=["Conversations"])
 
 
-@conversations_router.get("/conversations")
+@conversations_router.get("/")
 async def get_conversations(current_user: dict = Depends(get_current_user)):
     user_mail = current_user["email"]
 
@@ -18,7 +18,7 @@ async def get_conversations(current_user: dict = Depends(get_current_user)):
         "conversations": [parse_conversation(conversation) for conversation in conversations]
     }
 
-@conversations_router.get("/conversations/{conversation_id}")
+@conversations_router.get("/{conversation_id}")
 async def get_conversation(conversation_id: str, current_user: dict = Depends(get_current_user)):
     user_mail = current_user['mail']
 
@@ -28,7 +28,7 @@ async def get_conversation(conversation_id: str, current_user: dict = Depends(ge
 
     return parse_conversation(conversation)
 
-@conversations_router.post("/conversations")
+@conversations_router.post("/")
 async def create_conversation(conversation: Conversation, current_user: dict = Depends(get_current_user)):
     user_id = current_user["id"]
     conversation.participants.append(id)
