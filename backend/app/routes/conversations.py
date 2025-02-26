@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends, status
 from database import conversation_collection, conversation_participant_collection
-from ..models.conversation import Conversation, CreateConversationRequest, ConversationResponse
+from ..models.conversation import Conversation, ConversationResponse, CreateConvesationRequest
 from ..main import get_current_user
 from bson import ObjectId
 import datetime
@@ -28,25 +28,36 @@ async def get_conversation(conversation_id: str, current_user: dict = Depends(ge
 
     return parse_conversation(conversation)
 
-@conversations_router.post("/")
-async def create_conversation(conversation: Conversation, current_user: dict = Depends(get_current_user)):
-    user_id = current_user["id"]
-    conversation.participants.append(id)
-    
-    # Adiciona os participantes adicionais
-    conversation.participants.extend(conversation.additional_participants)
-    
-    conversation_id = conversation_collection.insert_one(conversation.model_dump()).inserted_id
+@conversations_router.post("/", response_model=ConversationResponse)
+async def create_conversation(request: CreateConvesationRequest):
 
-    # Cria entradas na coleção conversation_participant_collection para cada participante
-    for participant in conversation.participants:
-        conversation_participant_collection.insert_one({
-            "conversation_id": str(conversation_id),
-            "user_id": participant,
+    conversation_data = {
+        "name": request['name'],
+        "description": request['description'],
+        "is_group": request['is_group'],
+        "created_at": datetime.datetime.now(),
+    }
+
+    conversation_id = str(ObjectId())
+    conversation = Conversation(
+        id=conversation_id,
+        **conversation_data
+    )
+
+    participants = []
+
+    for user_id in request.additional_participants:
+        participant = {
+            "conversation_id": conversation_id,
+            "user_id": user_id,
             "joined_at": datetime.datetime.now()
-        })
+        }
+        participants.append(participant)
 
-    return { "id": str(conversation_id) }
+    return {
+        "conversation": conversation,
+        "participants": participants
+    }
 
 
 def parse_conversation(conversation):
