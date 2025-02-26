@@ -16,20 +16,20 @@ class CreateConvesationRequest(BaseModel):
     is_group: bool 
     additional_participants: List[str]
 
-    @field_validator('participants')
+    @field_validator('additional_participants')
     @classmethod
-    def validate_participants(cls, participants: List[str], values: ValidationInfo) -> List[str]:
+    def validate_participants(cls, additional_participants: List[str], values: ValidationInfo) -> List[str]:
         is_group = values.data.get('is_group', False)
 
         # Validação para conversas não-grupo
-        if not is_group and len(participants) != 2:
+        if not is_group and len(additional_participants) != 2:
             raise ValueError("Conversas privadas devem ter exatamente 2 participantes")
 
         # Validação geral de mínimo de participantes
-        if len(participants) < 2:
+        if len(additional_participants) < 2:
             raise ValueError("Toda conversa precisa de pelo menos 2 participantes")
 
-        return participants
+        return additional_participants
 
 class ConversationResponse(BaseModel):
     conversation: Conversation

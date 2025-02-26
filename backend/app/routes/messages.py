@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from bson import ObjectId
 from ..database import messages_collection
-from ..main import get_current_user
+from .auth import get_current_user
 import datetime
 
 messages_router = APIRouter(tags=["Messages"])

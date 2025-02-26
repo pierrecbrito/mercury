@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends, status
-from database import conversation_collection, conversation_participant_collection
+from ..database import conversation_collection, conversation_participant_collection
 from ..models.conversation import Conversation, ConversationResponse, CreateConvesationRequest
-from ..main import get_current_user
+from .auth import get_current_user
 from bson import ObjectId
 import datetime
 
@@ -28,34 +28,31 @@ async def get_conversation(conversation_id: str, current_user: dict = Depends(ge
 
     return parse_conversation(conversation)
 
-@conversations_router.post("/", response_model=ConversationResponse)
+@conversations_router.post("/")
 async def create_conversation(request: CreateConvesationRequest):
 
     conversation_data = {
-        "name": request['name'],
-        "description": request['description'],
-        "is_group": request['is_group'],
+        "name": request.name,
+        "description": request.description,
+        "is_group": request.is_group,
         "created_at": datetime.datetime.now(),
     }
 
-    conversation_id = str(ObjectId())
-    conversation = Conversation(
-        id=conversation_id,
-        **conversation_data
-    )
+    conversation_result = conversation_collection.insert_one(conversation_data)
+    conversation_id = str(conversation_result.inserted_id)
 
     participants = []
-
     for user_id in request.additional_participants:
         participant = {
             "conversation_id": conversation_id,
             "user_id": user_id,
             "joined_at": datetime.datetime.now()
         }
-        participants.append(participant)
+        conversation_participant_collection.insert_one(participant)
+        participants.append(user_id)
 
     return {
-        "conversation": conversation,
+        "conversation": Conversation(id=conversation_id, **conversation_data),
         "participants": participants
     }
 
