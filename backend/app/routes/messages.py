@@ -22,7 +22,7 @@ async def get_message(message_id: str, current_user: dict = Depends(get_current_
     
 @messages_router.post("/messages")
 async def create_message(message: dict, current_user: dict = Depends(get_current_user)):
-    message["sent_at"] = datetime.now()
+    message["sent_at"] = datetime.datetime.now()
     result = messages_collection.insert_one(message)
     message["id"] = str(result.inserted_id)
     return parse_message(message)
