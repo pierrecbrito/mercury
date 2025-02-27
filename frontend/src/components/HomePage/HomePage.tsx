@@ -1,16 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import './HomePage.css';
 import MenuHomePage from "../MenuHomePage/MenuHomePage";
+
+const bgBanner = require('../../assets/img/bg-banner.png');
 
 const HomePage: React.FC = () => {
   return (
     <div className="home-container">
         <MenuHomePage />
-        <h1>Welcome to the Home Page</h1>
-        <p>
-            <Link to="/login" className="login-link">Fazer Login</Link>
-        </p>
+        <div className="section" id="section-banner">
+            <h2 className="title-1">Connect. Chat. Inspire.</h2>
+            <h2 className="title-1">Your conversations, reimagined.</h2>
+        </div>
+       <img src={bgBanner} alt="Banner" className="img-banner"/>
     </div>
   );
 }

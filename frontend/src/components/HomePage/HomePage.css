@@ -1,8 +1,9 @@
 .home-container {
     text-align: center;
-  }
+    position: relative;
+}
   
-  .login-link {
+.login-link {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
@@ -10,4 +11,23 @@
     color: white;
     text-decoration: none;
     border-radius: 5px;
-  }
+}
+
+#section-banner {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#section-banner .title-1:nth-child(1) {
+    margin-top: 5rem;
+}
+
+.img-banner {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    max-width: 100%;
+    z-index: -1;
+}
