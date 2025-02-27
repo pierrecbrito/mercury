@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
     <div className="home-container">
         <MenuHomePage />
         <div className="section" id="section-banner">
-            <h2 className="title-1">Connect. Chat. Inspire.</h2>
+            <h2 className="title-1">Messaging Made Simple</h2>
             <p className="subtitle-1">Seamless messaging, secure connections, and endless possibilities—all in one place.</p>
         </div>
        <img src={bgBanner} alt="Banner" className="img-banner"/>
