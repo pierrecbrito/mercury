@@ -8,7 +8,6 @@
     display: flex;
     flex-direction: row;
     gap: 16px;
-    position: relative;
 }
 
 .message-float-container-image img {
@@ -35,10 +34,9 @@
 @keyframes fadeInMessageFloat {
     from {
         opacity: 0;
-        top: 40px;
+        transform: translateY(-50px);
     }
     to {
         opacity: 1;
-        top: 0;
     }
 }
