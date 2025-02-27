@@ -1,7 +1,7 @@
 .message-float {
-    background-color: rgba(35, 35, 35, 0.25);
+    background-color: rgba(35, 35, 35, 0.27);
     padding: 16px 24px;
-    max-width: 480px;
+    max-width: 300px;
     border-radius: 6px;
     text-align: left;
     animation: fadeInMessageFloat 2s;
