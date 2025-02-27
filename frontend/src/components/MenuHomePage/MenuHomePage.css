@@ -1,0 +1,34 @@
+.menu-container {
+    text-align: center;
+    padding: 32px 0;
+}
+
+.menu-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    max-width: 500px;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 8px 26px;
+    border: 1px solid #6A6E76;
+    border-radius: 16px;
+}
+
+.menu-item {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.menu-item a {
+    padding: 8px;
+    transition: all 0.5s;
+}
+
+.menu-item a:hover {
+    font-weight: bold;
+}
