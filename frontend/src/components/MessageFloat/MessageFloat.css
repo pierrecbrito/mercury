@@ -1,3 +1,38 @@
 .message-float {
-    
+    background-color: rgba(35, 35, 35, 0.22);
+    padding: 16px 24px;
+    max-width: 480px;
+    border-radius: 6px;
+    text-align: left;
+    animation: fadeInMessageFloat 0.5s;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.message-float-sender {
+    font-weight: 500;
+}
+
+.message-float-content {
+    color: #6B6E76;;
+}
+
+.message-float-container-image {
+    padding: 15px;
+}
+
+.message-float-container-data {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+@keyframes fadeInMessageFloat {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
