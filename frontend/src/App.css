@@ -23,6 +23,12 @@ a {
   margin-bottom: 0;
 }
 
+.title-2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
 .subtitle-1 {
   font-size: 1.3rem;
   margin: 0.5rem 0;

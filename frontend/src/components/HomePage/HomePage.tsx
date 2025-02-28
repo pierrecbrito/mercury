@@ -26,6 +26,14 @@ const HomePage: React.FC = () => {
             <MessageFloat top={150} right={150} image={profile3} profileName="Jhon Jovi" message="Mercury makes communication easy and super efficient!"/>
             <MessageFloat top={500} right={180} image={profile4} profileName="Albert Messon" message="The best messaging platform I've ever used, hands down!"/>
         </div>
+
+        <div className="section" id="section-app">
+            <div className="title-subtitle">
+              <h2 className="title-2">Revolutionizing Messaging: Features That Stand Out</h2>
+              <p className="subtitle-1">Discover the powerful tools designed to enhance your communication experience.</p>
+            </div>
+        </div>
+
        <img src={bgBanner} alt="Banner" className="img-banner"/>
     </div>
   );
