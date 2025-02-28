@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
             <Button text="Get Started"/>
             <MessageFloat top={150} left={90} image={profile1} profileName="Claus Maverick" message="Hello World! I'm tommy and this is a great app for contact."/>
             <MessageFloat top={400} left={170} image={profile2} profileName="André Mendes" message="Amazing platform! Mercury is my go-to for all messages!"/>
-            <MessageFloat top={200} right={150} image={profile3} profileName="Jhon Jovi" message="Mercury makes communication easy and super efficient!"/>
+            <MessageFloat top={150} right={150} image={profile3} profileName="Jhon Jovi" message="Mercury makes communication easy and super efficient!"/>
             <MessageFloat top={500} right={180} image={profile4} profileName="Albert Messon" message="The best messaging platform I've ever used, hands down!"/>
         </div>
        <img src={bgBanner} alt="Banner" className="img-banner"/>
