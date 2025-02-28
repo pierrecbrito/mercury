@@ -31,6 +31,10 @@
     margin: 0 auto;
 }
 
+.app-chat-features .title-3, .app-chat-features .text {
+    text-align: left;
+}
+
 .title-subtitle {
     display: flex;
     flex-direction: column;

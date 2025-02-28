@@ -36,7 +36,9 @@ const HomePage: React.FC = () => {
                 <div className="app-chat-features">
                     <div>
                         <h3 className="title-3">Real Time</h3>
-                        
+                        <p className="text">
+                            Stay connected with real-time messaging, and never miss a beat.
+                        </p>
                     </div>
                 </div>
                 <div className="app-chat-container">
