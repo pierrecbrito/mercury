@@ -32,6 +32,17 @@ const HomePage: React.FC = () => {
               <h2 className="title-2">Revolutionizing Messaging: Features That Stand Out</h2>
               <p className="subtitle-1">Discover the powerful tools designed to enhance your communication experience.</p>
             </div>
+            <div>
+                <div className="app-chat-features">
+                    <div>
+                        <h3 className="title-3">Real Time</h3>
+                        
+                    </div>
+                </div>
+                <div className="app-chat-container">
+
+                </div>
+            </div>
         </div>
 
        <img src={bgBanner} alt="Banner" className="img-banner"/>

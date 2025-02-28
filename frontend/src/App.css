@@ -29,9 +29,20 @@ a {
   margin-bottom: 0;
 }
 
+.title-3 {
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+  color: #FFFFFF;
+}
+
 .subtitle-1 {
   font-size: 1.3rem;
   margin: 0.5rem 0;
+  color: #6B6E76;
+}
+
+.text {
+  font-size: 1rem;
   color: #6B6E76;
 }
 
