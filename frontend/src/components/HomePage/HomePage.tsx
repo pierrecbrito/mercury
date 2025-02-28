@@ -2,6 +2,7 @@ import React from "react";
 import './HomePage.css';
 import MenuHomePage from "../MenuHomePage/MenuHomePage";
 import MessageFloat from "../MessageFloat/MessageFloat";
+import Button from "../Button/Button";
 
 const bgBanner = require('../../assets/img/bg-banner.png');
 const profile1 = require('../../assets/img/profile-2.jpg');
@@ -17,6 +18,7 @@ const HomePage: React.FC = () => {
         <div className="section" id="section-banner">
             <h2 className="title-1">Messaging Made Simple</h2>
             <p className="subtitle-1">Seamless messaging, secure connections, and endless possibilities—all in one place.</p>
+            <Button text="Get Started"/>
             <MessageFloat top={150} left={90} image={profile1} profileName="Claus Maverick" message="Hello World! I'm tommy and this is a great app for contact."/>
             <MessageFloat top={400} left={170} image={profile2} profileName="André Mendes" message="Amazing platform! Mercury is my go-to for all messages!"/>
             <MessageFloat top={200} right={150} image={profile3} profileName="Jhon Jovi" message="Mercury makes communication easy and super efficient!"/>
