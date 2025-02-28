@@ -32,12 +32,24 @@ const HomePage: React.FC = () => {
               <h2 className="title-2">Revolutionizing Messaging: Features That Stand Out</h2>
               <p className="subtitle-1">Discover the powerful tools designed to enhance your communication experience.</p>
             </div>
-            <div>
+            <div className="container">
                 <div className="app-chat-features">
-                    <div>
+                    <div className="app-chat-feature">
                         <h3 className="title-3">Real Time</h3>
                         <p className="text">
                             Stay connected with real-time messaging, and never miss a beat.
+                        </p>
+                    </div>
+                    <div className="app-chat-feature">
+                        <h3 className="title-3">Intuitive UI</h3>
+                        <p className="text">
+                            Our user-friendly interface makes messaging a breeze.
+                        </p>
+                    </div>
+                    <div className="app-chat-feature">
+                        <h3 className="title-3">Message Editing and Deletion</h3>
+                        <p className="text">
+                            Correct mistakes and remove messages with ease.
                         </p>
                     </div>
                 </div>
