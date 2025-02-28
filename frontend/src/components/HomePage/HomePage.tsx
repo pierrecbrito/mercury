@@ -16,8 +16,10 @@ const HomePage: React.FC = () => {
     <div className="home-container">
         <MenuHomePage />
         <div className="section" id="section-banner">
-            <h2 className="title-1">Messaging Made Simple</h2>
-            <p className="subtitle-1">Seamless messaging, secure connections, and endless possibilities—all in one place.</p>
+            <div className="title-subtitle">
+              <h2 className="title-1">Messaging Made Simple</h2>
+              <p className="subtitle-1">Seamless messaging, secure connections, and endless possibilities—all in one place.</p>
+            </div>
             <Button text="Get Started"/>
             <MessageFloat top={150} left={90} image={profile1} profileName="Claus Maverick" message="Hello World! I'm tommy and this is a great app for contact."/>
             <MessageFloat top={400} left={170} image={profile2} profileName="André Mendes" message="Amazing platform! Mercury is my go-to for all messages!"/>

@@ -19,8 +19,8 @@ a {
 
 .title-1 {
   font-size: 4rem;
-  margin: 1rem 0;
   font-weight: bold;
+  margin-bottom: 0;
 }
 
 .subtitle-1 {
