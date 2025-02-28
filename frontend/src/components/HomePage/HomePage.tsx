@@ -54,7 +54,9 @@ const HomePage: React.FC = () => {
                     </div>
                 </div>
                 <div className="app-chat-container">
-
+                    <div className="app-chat-message">
+                        Hello!
+                    </div>
                 </div>
             </div>
         </div>
