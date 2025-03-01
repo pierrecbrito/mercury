@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './HomePage.css';
 import MenuHomePage from "../MenuHomePage/MenuHomePage";
 import MessageFloat from "../MessageFloat/MessageFloat";
@@ -10,8 +10,33 @@ const profile2 = require('../../assets/img/profile-3.jpg');
 const profile3 = require('../../assets/img/profile-4.jpg');
 const profile4 = require('../../assets/img/profile-5.jpg');
 
+const messages = [
+    { type: "app-chat-message-2", text: "Yo, what's up?" },
+    { type: "app-chat-message-1", text: "Not much, just chilling. You?" },
+    { type: "app-chat-message-2", text: "Same here. Bored as hell." },
+    { type: "app-chat-message-1", text: "Haha, I feel you. Wanna play something?" },
+    { type: "app-chat-message-2", text: "Maybe later. I just ate and now I’m in that lazy mode." },
+    { type: "app-chat-message-1", text: "Bro, I know that feeling. Food coma is real." }
+];
+
 
 const HomePage: React.FC = () => {
+    const [chatMessages, setChatMessages] = useState<{ type: string, text: string }[]>([]);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setChatMessages((prevMessages) => {
+                const nextMessageIndex = prevMessages.length;
+                if (nextMessageIndex < messages.length) {
+                return [...prevMessages, messages[nextMessageIndex]];
+                } else {
+                clearInterval(interval);
+                return prevMessages;
+                }
+            });
+            }, 1000);
+        return () => clearInterval(interval);
+    }, []);
+
   return (
     <div className="home-container">
         <MenuHomePage />
@@ -57,36 +82,11 @@ const HomePage: React.FC = () => {
                     </div>
                 </div>
                 <div className="app-chat-container">
-                    <div className="app-chat-message-2">
-                        <span>
-                            Yo, what's up?
-                        </span>
-                    </div>
-                    <div className="app-chat-message-1">
-                        <span>
-                            Not much, just chilling. You?
-                        </span>
-                    </div>
-                    <div className="app-chat-message-2">
-                        <span>
-                            Same here. Bored as hell.
-                        </span>
-                    </div>
-                    <div className="app-chat-message-1">
-                        <span>
-                            Haha, I feel you. Wanna play something?
-                        </span>
-                    </div>
-                    <div className="app-chat-message-2">
-                        <span>
-                            Maybe later. I just ate and now I’m in that lazy mode.
-                        </span>
-                    </div>
-                    <div className="app-chat-message-1">
-                        <span>
-                            Bro, I know that feeling. Food coma is real.
-                        </span>
-                    </div>
+                    {chatMessages.map((msg, index) => (
+                      <div key={index} className={msg.type}>
+                        <span>{msg.text}</span>
+                      </div>
+                    ))}
                 </div>
             </div>
         </div>

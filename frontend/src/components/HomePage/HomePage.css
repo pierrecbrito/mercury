@@ -87,7 +87,7 @@
 }
 
 .app-chat-message-1, .app-chat-message-2 {
-    animation: fadeInUp 1s ease-in-out forwards;
+    animation: fadeInUp 0.2s ease-in-out forwards;
 }
 
 .app-chat-message-1 span, .app-chat-message-2 span {
