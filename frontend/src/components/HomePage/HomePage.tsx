@@ -54,8 +54,15 @@ const HomePage: React.FC = () => {
                     </div>
                 </div>
                 <div className="app-chat-container">
-                    <div className="app-chat-message">
-                        Hello!
+                    <div className="app-chat-message-2">
+                        <span>
+                            Hello, my name is Tommy. I'm here to help you with any questions you may have. Feel free to reach out to me at any time.
+                        </span>
+                    </div>
+                    <div className="app-chat-message-1">
+                        <span>
+                            Hello!
+                        </span>
                     </div>
                 </div>
             </div>
