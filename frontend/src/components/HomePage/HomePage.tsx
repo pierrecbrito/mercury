@@ -56,12 +56,32 @@ const HomePage: React.FC = () => {
                 <div className="app-chat-container">
                     <div className="app-chat-message-2">
                         <span>
-                            Hello, my name is Tommy. I'm here to help you with any questions you may have. Feel free to reach out to me at any time.
+                            Yo, what's up?
                         </span>
                     </div>
                     <div className="app-chat-message-1">
                         <span>
-                            Hello!
+                            Not much, just chilling. You?
+                        </span>
+                    </div>
+                    <div className="app-chat-message-2">
+                        <span>
+                            Same here. Bored as hell.
+                        </span>
+                    </div>
+                    <div className="app-chat-message-1">
+                        <span>
+                            Haha, I feel you. Wanna play something?
+                        </span>
+                    </div>
+                    <div className="app-chat-message-2">
+                        <span>
+                            Maybe later. I just ate and now I’m in that lazy mode.
+                        </span>
+                    </div>
+                    <div className="app-chat-message-1">
+                        <span>
+                            Bro, I know that feeling. Food coma is real.
                         </span>
                     </div>
                 </div>
