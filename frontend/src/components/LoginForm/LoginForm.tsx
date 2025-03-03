@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './LoginForm.css';
+import messages from "./JoinPageAnimation";
+import MessageFloat from "../MessageFloat/MessageFloat";
 
 interface LoginFormData {
     email: string;
@@ -8,6 +10,7 @@ interface LoginFormData {
 }
 
 const LoginForm: React.FC = () => {
+  
     return (
         <div className="login-page">
           <div className="login-container">
@@ -28,6 +31,19 @@ const LoginForm: React.FC = () => {
               <button type="submit">Entrar</button>
             </form>
           </div>
+          {messages.map((message, index) => {
+            return (
+              <MessageFloat
+                key={index}
+                top={message.top}
+                left={message.left}
+                right={message.right}
+                image={message.image}
+                profileName={message.profileName}
+                message={message.message}
+              />
+            );
+          })}
         </div>
       );
 }
