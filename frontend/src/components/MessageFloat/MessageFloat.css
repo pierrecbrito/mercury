@@ -40,3 +40,18 @@
         opacity: 1;
     }
 }
+
+
+.no-stay {
+    animation: fadeOutMessageFloat 2s;
+    display: none;
+}
+
+@keyframes fadeOutMessageFloat {
+    from {
+        display: block;
+    }
+    to {
+        display: none;
+    }
+}

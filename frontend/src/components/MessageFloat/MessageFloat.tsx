@@ -8,9 +8,10 @@ interface MessageFloatProps {
     top: number;
     left?: number;
     right?: number;
+    stay?: boolean;
 }
 
-const MessageFloat: React.FC<MessageFloatProps> = ({ image, profileName, message, top, left, right }) => {
+const MessageFloat: React.FC<MessageFloatProps> = ({ image, profileName, message, top, left, right, stay }) => {
   const styles: React.CSSProperties = {
     position: 'absolute',
     top: `${top}px`
@@ -21,6 +22,7 @@ const MessageFloat: React.FC<MessageFloatProps> = ({ image, profileName, message
   } else {
     styles.right = `${right}px`;
   }
+
 
   return (
     <div className="message-float" style={styles}>

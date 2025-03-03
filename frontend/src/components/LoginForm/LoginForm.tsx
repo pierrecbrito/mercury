@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import './LoginForm.css';
 import messages from "./JoinPageAnimation";
 import MessageFloat from "../MessageFloat/MessageFloat";
+import Button from "../Button/Button";
 
 interface LoginFormData {
     email: string;
@@ -28,7 +29,7 @@ const LoginForm: React.FC = () => {
                   type="password"
                 />
               </div>
-              <button type="submit">Entrar</button>
+              <Button text="Entrar" />
             </form>
           </div>
           {messages.map((message, index) => {
