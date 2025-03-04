@@ -48,10 +48,14 @@
 }
 
 @keyframes fadeOutMessageFloat {
-    from {
+    0% {
+        opacity: 0;
+        transform: translateY(150px);
+    }
+    50% {
         opacity: 1;
     }
-    to {
+    100% {
         opacity: 0;
     }
 }

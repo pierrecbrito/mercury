@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './LoginForm.css';
 import messages from "./JoinPageAnimation";
@@ -11,6 +11,24 @@ interface LoginFormData {
 }
 
 const LoginForm: React.FC = () => {
+  const [visibleMessages, setVisibleMessages] = useState<typeof messages>([]);
+    const messageInterval = 1000; // Intervalo em milissegundos (3 segundos)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setVisibleMessages(prevMessages => {
+                const nextMessageIndex = prevMessages.length;
+                if (nextMessageIndex < messages.length) {
+                    return [...prevMessages, messages[nextMessageIndex]];
+                } else {
+                    clearInterval(interval);
+                    return prevMessages;
+                }
+            });
+        }, messageInterval);
+
+        return () => clearInterval(interval);
+    }, []);
   
     return (
         <div className="login-page">
@@ -36,7 +54,7 @@ const LoginForm: React.FC = () => {
               
             </form>
           </div>
-          {messages.map((message, index) => {
+          {visibleMessages.map((message, index) => {
             return (
               <MessageFloat
                 key={index}
