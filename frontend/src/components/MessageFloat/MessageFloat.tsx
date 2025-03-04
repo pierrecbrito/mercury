@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import './MessageFloat.css';
 
 interface MessageFloatProps {
@@ -23,9 +23,10 @@ const MessageFloat: React.FC<MessageFloatProps> = ({ image, profileName, message
     styles.right = `${right}px`;
   }
 
+  const classs = stay ? 'message-float' : 'message-float no-stay';
 
   return (
-    <div className="message-float" style={styles}>
+    <div className={classs} style={styles}>
         <div className="message-float-container-image">
             {image && <img src={image} alt="Message"/>}
         </div>

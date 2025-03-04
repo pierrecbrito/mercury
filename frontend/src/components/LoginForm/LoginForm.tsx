@@ -46,6 +46,7 @@ const LoginForm: React.FC = () => {
                 image={message.image}
                 profileName={message.profileName}
                 message={message.message}
+                stay={false}
               />
             );
           })}
