@@ -25,6 +25,11 @@
   box-sizing: border-box ;
 }
 
+.form-group input:focus {
+  outline: none;
+  border: 1px solid rgb(49, 49, 49);
+}
+
 button {
   background-color: #007bff;
   color: white;
