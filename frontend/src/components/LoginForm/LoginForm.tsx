@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './LoginForm.css';
 import messages from "./JoinPageAnimation";
 import MessageFloat from "../MessageFloat/MessageFloat";
@@ -30,6 +30,10 @@ const LoginForm: React.FC = () => {
                 />
               </div>
               <Button text="Entrar" />
+              <div className="form-group">
+                <Link to="/join">Register here</Link>
+              </div>
+              
             </form>
           </div>
           {messages.map((message, index) => {
