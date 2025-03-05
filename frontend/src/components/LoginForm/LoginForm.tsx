@@ -69,7 +69,6 @@ const LoginForm: React.FC = () => {
               </div>
               <Button text="Entrar" onClick={handleLogin} />
               {error && <p>{error}</p>}
-              {token && <p>Token recebido: {token}</p>}
               <div className="form-group">
                 <Link to="/join">Register here</Link>
               </div>
