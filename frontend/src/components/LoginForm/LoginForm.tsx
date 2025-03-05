@@ -4,6 +4,7 @@ import './LoginForm.css';
 import messages from "./JoinPageAnimation";
 import MessageFloat from "../MessageFloat/MessageFloat";
 import Button from "../Button/Button";
+import { login } from "../../services/userService";
 
 interface LoginFormData {
     email: string;
@@ -12,9 +13,13 @@ interface LoginFormData {
 
 const LoginForm: React.FC = () => {
   const [visibleMessages, setVisibleMessages] = useState<typeof messages>([]);
-    const messageInterval = 1000; // Intervalo em milissegundos (3 segundos)
+  const messageInterval = 1000; // Intervalo em milissegundos (3 segundos)
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [token, setToken] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
+  useEffect(() => {
         const interval = setInterval(() => {
             setVisibleMessages(prevMessages => {
                 const nextMessageIndex = prevMessages.length;
@@ -29,7 +34,18 @@ const LoginForm: React.FC = () => {
 
         return () => clearInterval(interval);
     }, []);
-  
+
+    const handleLogin = async () => {
+      try {
+        const authData = await login(email, password);
+        setToken(authData.access_token);
+        console.log('Token:', authData.access_token);
+        localStorage.setItem('token', authData.access_token);
+      } catch(err) {
+        setError('Email ou senha inválidos');
+      }
+    };
+
     return (
         <div className="login-page">
           <div className="login-container">
@@ -39,15 +55,21 @@ const LoginForm: React.FC = () => {
                 <label>Email:</label>
                 <input
                   type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-group">
                 <label>Senha:</label>
                 <input
                   type="password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                 />
               </div>
-              <Button text="Entrar" />
+              <Button text="Entrar" onClick={handleLogin} />
+              {error && <p>{error}</p>}
+              {token && <p>Token recebido: {token}</p>}
               <div className="form-group">
                 <Link to="/join">Register here</Link>
               </div>
