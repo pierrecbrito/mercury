@@ -20,14 +20,16 @@
 .form-group input {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #3d444d;
   border-radius: 4px;
   box-sizing: border-box ;
+  background-color: transparent;
+  color: #FFFFFF;
 }
 
 .form-group input:focus {
   outline: none;
-  border: 1px solid rgb(49, 49, 49);
+  border: 1px solid #007bff;;
 }
 
 button {
