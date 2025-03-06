@@ -53,6 +53,17 @@ a {
   padding: 0 20px;
 }
 
+.hidden {
+  display: none;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
 
 
 
