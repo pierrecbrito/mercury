@@ -5,6 +5,7 @@ import messages from "./JoinPageAnimation";
 import MessageFloat from "../MessageFloat/MessageFloat";
 import Button from "../Button/Button";
 import { login } from "../../services/userService";
+const logo = require('../../assets/img/logo-mercury.png');
 
 interface LoginFormData {
     email: string;
@@ -49,6 +50,7 @@ const LoginForm: React.FC = () => {
     return (
         <div className="login-page">
           <div className="login-container">
+            <img className="logo" src={logo}/>
             <h2 className="title-3">Login</h2>
             <p className="text">Enter with your email and password to access your account</p>
             <form>
