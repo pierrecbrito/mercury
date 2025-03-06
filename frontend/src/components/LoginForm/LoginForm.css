@@ -9,7 +9,7 @@
 }
   
 .form-group {
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 .form-group label {
@@ -29,7 +29,6 @@
 
 .form-group input:focus {
   outline: none;
-  border: 1px solid #007bff;;
 }
 
 button {

@@ -49,7 +49,8 @@ const LoginForm: React.FC = () => {
     return (
         <div className="login-page">
           <div className="login-container">
-            <h2>Login</h2>
+            <h2 className="title-3">Login</h2>
+            <p className="text">Enter with your email and password to access your account</p>
             <form>
               <div className="form-group">
                 <label>Email:</label>
@@ -57,6 +58,7 @@ const LoginForm: React.FC = () => {
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
+                  placeholder="Enter with your email account here"
                 />
               </div>
               <div className="form-group">
@@ -65,6 +67,7 @@ const LoginForm: React.FC = () => {
                   type="password"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
+                  placeholder="Enter with your password account here"
                 />
               </div>
               <Button text="Entrar" onClick={handleLogin} />
