@@ -13,7 +13,7 @@ interface LoginFormData {
 
 const LoginForm: React.FC = () => {
   const [visibleMessages, setVisibleMessages] = useState<typeof messages>([]);
-  const messageInterval = 1000; // Intervalo em milissegundos (3 segundos)
+  const messageInterval = 3000; 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [token, setToken] = useState<string | null>(null);
