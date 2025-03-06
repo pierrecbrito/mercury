@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './MenuHomePage.css';
+const logo = require('../../assets/img/logo-mercury.png');
 
 const MenuHomePage: React.FC = () => {
   return (

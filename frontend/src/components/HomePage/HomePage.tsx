@@ -4,6 +4,7 @@ import MenuHomePage from "../MenuHomePage/MenuHomePage";
 import MessageFloat from "../MessageFloat/MessageFloat";
 import Button from "../Button/Button";
 
+const logo = require('../../assets/img/logo-mercury.png');
 const bgBanner = require('../../assets/img/bg-banner.png');
 const profile1 = require('../../assets/img/profile-2.jpg');
 const profile2 = require('../../assets/img/profile-3.jpg');
@@ -42,6 +43,7 @@ const HomePage: React.FC = () => {
         <MenuHomePage />
         <div className="section" id="section-banner">
             <div className="title-subtitle">
+              <img className="logo" src={logo}/>
               <h2 className="title-1">Messaging Made Simple</h2>
               <p className="subtitle-1">Seamless messaging, secure connections, and endless possibilities—all in one place.</p>
             </div>
