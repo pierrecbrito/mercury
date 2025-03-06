@@ -8,6 +8,9 @@
   border: 1px solid rgb(49, 49, 49);
 }
 
+.login-container .link, .register-container .link  {
+  font-size: 0.9rem;
+}
   
 .form-group {
   margin: 15px 0;
@@ -51,4 +54,5 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 12px;
 }
