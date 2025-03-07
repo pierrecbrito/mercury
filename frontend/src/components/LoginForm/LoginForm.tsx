@@ -4,7 +4,7 @@ import './LoginForm.css';
 import messages from "./JoinPageAnimation";
 import MessageFloat from "../MessageFloat/MessageFloat";
 import Button from "../Button/Button";
-import { login } from "../../services/userService";
+import { login, register } from "../../services/userService";
 const logo = require('../../assets/img/logo-mercury.png');
 
 interface LoginFormData {
@@ -15,8 +15,10 @@ interface LoginFormData {
 const LoginForm: React.FC = () => {
   const [visibleMessages, setVisibleMessages] = useState<typeof messages>([]);
   const messageInterval = 3000; 
+  const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
   const [token, setToken] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLogin, setIsLogin] = useState<boolean>(true);
@@ -50,6 +52,18 @@ const LoginForm: React.FC = () => {
     }
   };
 
+  const handleRegister = async () => {
+    try {
+      const authData = await register(email, email, password);
+      const authLogin = await login(email, password);
+      
+      localStorage.setItem('token', authLogin.access_token);
+      navigate('/app');
+    } catch(err) {
+      setError('Email ou senha inválidos');
+    }
+  }
+
   const loginContainerClass = isLogin ? 'login-container' : 'login-container hidden';
   const registerContainerClass = isLogin ? 'register-container hidden' : 'register-container ';
 
@@ -78,7 +92,7 @@ const LoginForm: React.FC = () => {
                 placeholder="Enter with your password account here"
               />
             </div>
-            <Button text="Entrar" onClick={handleLogin} />
+            <Button text="Log In" onClick={handleLogin} />
             {error && <p>{error}</p>}
             <div className="form-group">
               <div className="link" onClick={() => {setIsLogin(false)}}>Register here</div>
@@ -92,12 +106,12 @@ const LoginForm: React.FC = () => {
           <p className="text">Enter with your email and password to create your account</p>
           <form>
             <div className="form-group">
-              <label>Name:</label>
+              <label>Username:</label>
               <input
                 type="text"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Enter with your email account here"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+                placeholder="Enter with your username account here"
               />
             </div>
             <div className="form-group">
@@ -122,12 +136,12 @@ const LoginForm: React.FC = () => {
               <label>Confirm password:</label>
               <input
                 type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                placeholder="Enter with your password account here"
+                value={passwordConfirmation}
+                onChange={e => setPasswordConfirmation(e.target.value)}
+                placeholder="Confirm your password account here"
               />
             </div>
-            <Button text="Entrar" onClick={handleLogin} />
+            <Button text="Register" onClick={handleRegister} />
             {error && <p>{error}</p>}
             <div className="form-group">
               <div className="link" onClick={() => {setIsLogin(true)}}>Login here</div>
