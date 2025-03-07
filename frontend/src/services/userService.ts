@@ -6,3 +6,8 @@ export const login = async (email: string, password_hash: string): Promise<AuthR
   const response = await api.post('/auth/login', { email, password_hash });
   return response.data;
 }
+
+export const register = async (username: string, email: string, password_hash: string): Promise<User> => {
+  const response = await api.post('/auth/register', { username, email, password_hash });
+  return response.data;
+}
