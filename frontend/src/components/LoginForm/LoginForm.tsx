@@ -54,12 +54,13 @@ const LoginForm: React.FC = () => {
 
   const handleRegister = async () => {
     try {
-      const authData = await register(email, email, password);
+      const authData = await register(username, email, password);
       const authLogin = await login(email, password);
       
       localStorage.setItem('token', authLogin.access_token);
       navigate('/app');
     } catch(err) {
+      console.log(err);
       setError('Email ou senha inválidos');
     }
   }
