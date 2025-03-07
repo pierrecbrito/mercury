@@ -24,19 +24,18 @@ const LoginForm: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-        const interval = setInterval(() => {
-            setVisibleMessages(prevMessages => {
-                const nextMessageIndex = prevMessages.length;
-                if (nextMessageIndex < messages.length) {
-                    return [...prevMessages, messages[nextMessageIndex]];
-                } else {
-                    clearInterval(interval);
-                    return prevMessages;
-                }
-            });
-        }, messageInterval);
+    const interval = setInterval(() => {
+        setVisibleMessages(prevMessages => {
+            const nextMessageIndex = prevMessages.length;
+            if (nextMessageIndex < messages.length) {
+                return [...prevMessages, messages[nextMessageIndex]];
+            } else {
+                return [messages[0]]; // Reinicia a animação
+            }
+        });
+    }, messageInterval);
 
-        return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
 
   const handleLogin = async () => {
