@@ -21,6 +21,8 @@ const LoginForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLogin, setIsLogin] = useState<boolean>(true);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
         const interval = setInterval(() => {
             setVisibleMessages(prevMessages => {
@@ -43,6 +45,7 @@ const LoginForm: React.FC = () => {
       setToken(authData.access_token);
       console.log('Token:', authData.access_token);
       localStorage.setItem('token', authData.access_token);
+      navigate('/app');
     } catch(err) {
       setError('Email ou senha inválidos');
     }
