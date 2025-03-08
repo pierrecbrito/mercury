@@ -22,9 +22,9 @@ const ChatPage: React.FC =  (props) => {
   }
 
   return (
-    <div className="app-container">
-        <div>
-          <span>{user.username}</span>
+    <div className="chat-container">
+        <div className="chat-container-header">
+          <span className="chat-username-user">{user.username}</span>
         </div>
     </div>
   );

@@ -1,6 +1,18 @@
 .chat-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     height: 90vh;
+    padding-top: 30px;
 }
+
+.chat-container-header {
+    text-align: center;
+}
+
+.chat-username-user {
+    padding: 12px 22px;
+    border: 1px solid #3d444d;
+    border-radius: 8px;
+}
+
