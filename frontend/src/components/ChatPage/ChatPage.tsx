@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import './ChatPage.css';
 import { getUser } from "../../services/userService";
 import { MeResponse } from "../../types/auth";
+import Button from "../Button/Button";
 
 
 const ChatPage: React.FC =  (props) => {
@@ -25,6 +26,11 @@ const ChatPage: React.FC =  (props) => {
     <div className="chat-container">
         <div className="chat-container-header">
           <span className="chat-username-user">{user.username}</span>
+          <Button onClick={() => {
+            localStorage.removeItem('token');
+            window.location.reload();
+          }
+          } text="Logout"/>
         </div>
     </div>
   );
