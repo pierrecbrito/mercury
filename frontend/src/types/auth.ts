@@ -6,3 +6,9 @@ export interface AuthReponse {
 export interface RegisterResponse {
     message: string;
 }
+
+export interface MeResponse {
+    username: string;
+    email: string;
+    created_at: string;
+}
