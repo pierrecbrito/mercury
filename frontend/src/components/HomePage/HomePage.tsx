@@ -23,20 +23,30 @@ const messages = [
 
 const HomePage: React.FC = () => {
     const [chatMessages, setChatMessages] = useState<{ type: string, text: string }[]>([]);
+    const [messageIndex, setMessageIndex] = useState(0);
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            setChatMessages((prevMessages) => {
-                const nextMessageIndex = prevMessages.length;
-                if (nextMessageIndex < messages.length) {
-                return [...prevMessages, messages[nextMessageIndex]];
-                } else {
-                clearInterval(interval);
-                return prevMessages;
-                }
-            });
+        if (messageIndex === 0) {
+            const timeout = setTimeout(() => {
+                setChatMessages([messages[0]]);
+                setMessageIndex(1);
+            }, 4000);
+            return () => clearTimeout(timeout);
+        } else {
+            const interval = setInterval(() => {
+                setChatMessages((prevMessages) => {
+                    if (messageIndex < messages.length) {
+                        setMessageIndex(messageIndex + 1);
+                        return [...prevMessages, messages[messageIndex]];
+                    } else {
+                        setMessageIndex(0); // Reinicia a animação
+                        return [];
+                    }
+                });
             }, 1000);
-        return () => clearInterval(interval);
-    }, []);
+            return () => clearInterval(interval);
+        }
+    }, [messageIndex]);
 
   return (
     <div className="home-container">
