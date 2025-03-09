@@ -20,7 +20,8 @@ const LoginForm: React.FC = () => {
   const [password, setPassword] = useState<string>('');
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>('');
   const [token, setToken] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [errorLogin, setErrorLogin] = useState<string | null>(null);
+  const [errorRegister, setErrorRegister] = useState<string | null>(null);
   const [isLogin, setIsLogin] = useState<boolean>(true);
 
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const LoginForm: React.FC = () => {
       localStorage.setItem('token', authData.access_token);
       navigate('/app');
     } catch(err) {
-      setError('Email ou senha inválidos');
+      setErrorLogin('Email ou senha inválidos');
     }
   };
 
@@ -61,7 +62,7 @@ const LoginForm: React.FC = () => {
       navigate('/app');
     } catch(err) {
       console.log(err);
-      setError('Email ou senha inválidos');
+      setErrorRegister('Email ou senha inválidos');
     }
   }
 
@@ -75,6 +76,7 @@ const LoginForm: React.FC = () => {
           <h2 className="title-3">Login</h2>
           <p className="text">Enter with your email and password to access your account</p>
           <form>
+            {errorLogin && <p>{errorLogin}</p>}
             <div className="form-group">
               <label>Email:</label>
               <input
@@ -94,7 +96,7 @@ const LoginForm: React.FC = () => {
               />
             </div>
             <Button text="Log In" onClick={handleLogin} />
-            {error && <p>{error}</p>}
+            
             <div className="form-group">
               <div className="link" onClick={() => {setIsLogin(false)}}>Register here</div>
             </div>
@@ -106,6 +108,7 @@ const LoginForm: React.FC = () => {
           <h2 className="title-3">Register</h2>
           <p className="text">Enter with your email and password to create your account</p>
           <form>
+            {errorRegister && <p>{errorRegister}</p>}
             <div className="form-group">
               <label>Username:</label>
               <input
@@ -143,7 +146,7 @@ const LoginForm: React.FC = () => {
               />
             </div>
             <Button text="Register" onClick={handleRegister} />
-            {error && <p>{error}</p>}
+            
             <div className="form-group">
               <div className="link" onClick={() => {setIsLogin(true)}}>Login here</div>
             </div>
