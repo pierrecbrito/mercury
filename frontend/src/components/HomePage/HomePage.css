@@ -67,7 +67,7 @@
     gap: 40px;
     align-items: start;
     justify-content: space-around;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
 }
 
 .app-chat-container {
@@ -148,4 +148,22 @@
         display: block;
         opacity: 1;
     }
+}
+
+#section-partners {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 60px;
+}
+
+#section-partners .container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: rgba(18, 18, 18, 0.3);
+    border: 1px solid rgb(49, 49, 49);
+    border-radius: 8px;
 }
