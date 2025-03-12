@@ -32,6 +32,9 @@ const ChatPage: React.FC =  (props) => {
           }
           } text="Logout"/>
         </div>
+        <div className="chat-container-body">
+          
+        </div>
     </div>
   );
 }
