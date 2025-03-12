@@ -3,20 +3,17 @@ import './ChatPage.css';
 import { getUser } from "../../services/userService";
 import { MeResponse } from "../../types/auth";
 import Button from "../Button/Button";
+import { useUser } from "../../context/UserContext";
 
 
 const ChatPage: React.FC =  (props) => {
-  const [user, setUser] = useState<MeResponse | null>(null);
+  const { user, setUser } = useUser();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const token = localStorage.getItem('token') || '';
-      const userData = await getUser(token);
-      setUser(userData);
-    };
-
-    fetchUser();
-  }, []);
+  // Exemplo de logout
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+  };
 
   if (!user) {
     return <div>Loading...</div>;
@@ -33,7 +30,7 @@ const ChatPage: React.FC =  (props) => {
           } text="Logout"/>
         </div>
         <div className="chat-container-body">
-          
+
         </div>
     </div>
   );
