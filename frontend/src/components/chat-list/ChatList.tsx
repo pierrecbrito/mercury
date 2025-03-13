@@ -1,10 +1,7 @@
 import React from "react";
 import './ChatList.css';
 
-interface ChatListProps {
-    text: string;
-    onClick?: () => void;
-}
+interface ChatListProps {}
 
 const ChatList: React.FC<ChatListProps> = () => {
   return (

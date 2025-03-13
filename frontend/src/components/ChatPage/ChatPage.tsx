@@ -4,6 +4,7 @@ import { getUser } from "../../services/userService";
 import { MeResponse } from "../../types/auth";
 import Button from "../Button/Button";
 import { useUser } from "../../context/UserContext";
+import ChatList from "../chat-list/ChatList";
 
 
 const ChatPage: React.FC =  (props) => {
@@ -30,7 +31,7 @@ const ChatPage: React.FC =  (props) => {
           } text="Logout"/>
         </div>
         <div className="chat-container-body">
-
+          <ChatList />
         </div>
     </div>
   );
