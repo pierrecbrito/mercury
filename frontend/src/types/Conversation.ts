@@ -6,3 +6,8 @@ export interface Conversation {
     created_at: string;
 }
 
+export interface ConversationsResponse {
+    name: string;
+    coversations: Conversation[];
+}
+
