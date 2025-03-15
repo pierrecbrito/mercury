@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './LoginForm.css';
 import messages from "./JoinPageAnimation";
@@ -23,6 +23,9 @@ const LoginForm: React.FC = () => {
   const [errorLogin, setErrorLogin] = useState<string | null>(null);
   const [errorRegister, setErrorRegister] = useState<string | null>(null);
   const [isLogin, setIsLogin] = useState<boolean>(true);
+  
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
 
@@ -66,6 +69,18 @@ const LoginForm: React.FC = () => {
     }
   }
 
+  const handleKeyDownEmail = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      passwordRef.current?.focus();
+    }
+  };
+
+  const handleKeyDownPassword = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleLogin();
+    }
+  };
+
   const loginContainerClass = isLogin ? 'login-container' : 'login-container hidden';
   const registerContainerClass = isLogin ? 'register-container hidden' : 'register-container ';
 
@@ -84,6 +99,8 @@ const LoginForm: React.FC = () => {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="Enter with your email account here"
+                onKeyDown={handleKeyDownEmail}
+                ref={emailRef}
               />
             </div>
             <div className="form-group">
@@ -93,6 +110,8 @@ const LoginForm: React.FC = () => {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder="Enter with your password account here"
+                onKeyDown={handleKeyDownPassword}
+                ref={passwordRef}
               />
             </div>
             <Button text="Log In" onClick={handleLogin} />
